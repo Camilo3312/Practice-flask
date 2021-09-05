@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Update registers</h1>
+
+    <form action="/update_register/{{datas[0]}}" method="POST">
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Document</label>
+            <input type="text" class="form-control" name="document" value="{{datas[1]}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Names</label>
+            <input type="text" class="form-control" name="names" value="{{datas[2]}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Surnames</label>
+            <input type="text" class="form-control" name="surnames" value="{{datas[3]}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" value="{{datas[4]}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" value="{{datas[5]}}"  name="email"id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Rergister</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}    
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>Error!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

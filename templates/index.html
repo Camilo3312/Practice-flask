@@ -1,0 +1,76 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+
+<div class="container">
+
+<h1>Crud</h1>
+
+<form action="/register_user" method="POST">
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Document</label>
+        <input type="text" class="form-control" name="document">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Names</label>
+        <input type="text" class="form-control" name="names">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Surnames</label>
+        <input type="text" class="form-control" name="surnames">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Phone</label>
+        <input type="text" class="form-control" name="phone">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control"  name="email"id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Rergister</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}    
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>      
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Document</th>
+        <th>Names</th>
+        <th>Surnames</th>
+        <th>Phone</th>
+        <th>Email address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in datas %}
+      <tr>
+        <th>{{i[0]}}</th>
+        <th>{{i[1]}}</th>
+        <th>{{i[2]}}</th>
+        <th>{{i[3]}}</th>
+        <th>{{i[4]}}</th>
+        <th>{{i[5]}}</th>
+        <th>
+            <a href="/delete_register/{{i[0]}}"class="btn btn-danger btn-delete">Delete</a>
+            <a href="/update_register/{{i[0]}}"class="btn btn-primary">Update</a>
+        </th>
+
+      </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}
