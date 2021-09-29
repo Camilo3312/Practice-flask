@@ -32,7 +32,7 @@ def validateDocument(document):
 
 def validateFields(document, names, surnames, phone, email):            
     if (document == '' or names == '' or surnames == '' or phone == '' or email == ''):
-        flash('Plis complete all fields')         
+        flash('Please complete all fields')         
         return True
     return False  
 
