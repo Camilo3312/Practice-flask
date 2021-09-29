@@ -14,7 +14,7 @@ app.config['MYSQL_DB'] = 'bopzzm3wvllhte5nnepy'
 
 mysql = MySQL(app)
 
-app.secret_key = 'abueno'
+app.secret_key = 'mysecretkey'
 
 def selectUsers():
     cursor = mysql.connection.cursor()
